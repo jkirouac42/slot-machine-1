@@ -50,8 +50,8 @@ namespace SlotMachine
 
                 // payout
                 Console.WriteLine("You won {0} pennies!", myMachine.GetPayout());
-                break;
-                Console.ReadKey();
+
+                myMachine.PullLever();
             }
 
             

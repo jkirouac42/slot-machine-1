@@ -7,9 +7,20 @@ using System.Threading.Tasks;
 namespace SlotMachine
 {
     class SlotMachine
-    {
+    {  public int [] icons;
+        private int _numberOfSlots;
+        public int NumberOfSlots {
+            get {
+                return _numberOfSlots;
+            }
 
-        public int NumberOfSlots { get; set; }
+            set
+            {
+                _numberOfSlots = value;
+                icons = new int[_numberOfSlots];
+            }
+        }
+
 
         public int IconsPerSlot { get; set; }
         public int MinimumBet { get; set; }
@@ -41,7 +52,7 @@ namespace SlotMachine
         /// An array of integers that is as long as the number of slots,
         /// with each element of the array representing a different slot
         /// </summary>
-        public int[] icons = new int[3];
+        
 
         public SlotMachine()
         {
@@ -90,6 +101,14 @@ namespace SlotMachine
 
         {
 
+            /*int firstSlot = icons[0];
+            bool win = firstSlot;
+            if (win == Array.TrueForAll(icon, y => y == firstSlot)
+            _currentBet 
+
+            */
+
+
             var i1 = (icons.GetValue(0));
             var i2 = (icons.GetValue(1));
             var i3 = (icons.GetValue(2));
@@ -100,7 +119,7 @@ namespace SlotMachine
             }
             else _currentBet = 0;
 
-            return _currentBet;
+            return _currentBet * 3;
         }
            
 
