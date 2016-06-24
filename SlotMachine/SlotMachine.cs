@@ -8,12 +8,13 @@ namespace SlotMachine
 {
     class SlotMachine
     {
+
         public int NumberOfSlots { get; set; }
 
         public int IconsPerSlot { get; set; }
         public int MinimumBet { get; set; }
         public int MaximumBet { get; set; }
-        
+
 
         private int _currentBet;
         public int CurrentBet
@@ -40,8 +41,7 @@ namespace SlotMachine
         /// An array of integers that is as long as the number of slots,
         /// with each element of the array representing a different slot
         /// </summary>
-        private int[] icons;
-
+        public int[] icons = new int[3];
 
         public SlotMachine()
         {
@@ -56,7 +56,18 @@ namespace SlotMachine
         /// </summary>
         public void PullLever()
         {
-            // TODO
+            Random random = new Random();
+            //Console.WriteLine( random.Next(1, 6));
+            //Console.WriteLine(random.Next(1, 6));
+            //Console.WriteLine(random.Next(1, 6));
+            for (int i = 0; i < icons.Length; i++)
+
+            {
+                int myRoll;
+                myRoll = random.Next(1, 6);
+                icons[i] = myRoll;
+            }
+
         }
 
         /// <summary>
@@ -66,7 +77,8 @@ namespace SlotMachine
         public int[] GetResults()
         {
             // TODO
-            return null;
+            PullLever();
+            return icons;
         }
 
         /// <summary>
@@ -75,12 +87,25 @@ namespace SlotMachine
         /// </summary>
         /// <returns>number of pennies to pay out</returns>
         public int GetPayout()
+
         {
-            // TODO
-            return 0;
+
+            var i1 = (icons.GetValue(0));
+            var i2 = (icons.GetValue(1));
+            var i3 = (icons.GetValue(2));
+
+            if (i1 == i2 && i2 == i3)
+            {
+                _currentBet = icons[1];
+            }
+            else _currentBet = 0;
+
+            return _currentBet;
         }
-
-
+           
 
     }
+
+
 }
+

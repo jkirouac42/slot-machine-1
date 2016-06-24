@@ -39,6 +39,7 @@ namespace SlotMachine
                 Console.WriteLine("Press enter to pull the lever");
                 Console.ReadKey(); // TODO Later: make this actually look for ENTER
                 myMachine.PullLever();
+                
 
                 // display the results
                 int[] tempResults = myMachine.GetResults();
@@ -49,8 +50,11 @@ namespace SlotMachine
 
                 // payout
                 Console.WriteLine("You won {0} pennies!", myMachine.GetPayout());
+                break;
+                Console.ReadKey();
             }
 
-        }
+            
+        } 
     }
 }
