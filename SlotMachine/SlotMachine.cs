@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 namespace SlotMachine
 {
     class SlotMachine
-    {  public int [] icons;
+    {
+        public int[] icons;
         private int _numberOfSlots;
-        public int NumberOfSlots {
-            get {
+        public int NumberOfSlots
+        {
+            get
+            {
                 return _numberOfSlots;
             }
 
@@ -52,7 +55,7 @@ namespace SlotMachine
         /// An array of integers that is as long as the number of slots,
         /// with each element of the array representing a different slot
         /// </summary>
-        
+
 
         public SlotMachine()
         {
@@ -68,15 +71,13 @@ namespace SlotMachine
         public void PullLever()
         {
             Random random = new Random();
-            //Console.WriteLine( random.Next(1, 6));
-            //Console.WriteLine(random.Next(1, 6));
-            //Console.WriteLine(random.Next(1, 6));
+
             for (int i = 0; i < icons.Length; i++)
 
             {
-                int myRoll;
-                myRoll = random.Next(1, 6);
-                icons[i] = myRoll;
+                //int myRoll;
+
+                icons[i] = random.Next(IconsPerSlot) + 1;// +1 can be in parenthises
             }
 
         }
@@ -87,7 +88,7 @@ namespace SlotMachine
         /// <returns>an int[] with each slot as an element of the array</returns>
         public int[] GetResults()
         {
-            // TODO
+
             PullLever();
             return icons;
         }
@@ -100,31 +101,22 @@ namespace SlotMachine
         public int GetPayout()
 
         {
-
-            /*int firstSlot = icons[0];
-            bool win = firstSlot;
-            if (win == Array.TrueForAll(icon, y => y == firstSlot)
-            _currentBet 
-
-            */
-
-
-            var i1 = (icons.GetValue(0));
-            var i2 = (icons.GetValue(1));
-            var i3 = (icons.GetValue(2));
+            int i1 = (icons[0]);
+            int i2 = (icons[1]);
+            int i3 = (icons[2]);
+            int payout = 0;
 
             if (i1 == i2 && i2 == i3)
             {
-                _currentBet = icons[1];
+                payout = icons[1] * 1000 * CurrentBet;
             }
-            else _currentBet = 0;
+            return payout;
 
-            return _currentBet * 3;
         }
-           
-
     }
 
-
 }
+
+
+
 
